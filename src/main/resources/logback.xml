@@ -1,0 +1,31 @@
+<configuration debug="true">
+    <variable name="LOG_LEVEL" value="${LOG_LEVEL:-INFO}"/>
+    <variable name="LOG_DIR" value="${LOG_DIR:-/var/log}"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/app_logs.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>app_logs.%d{yyyy-MM-dd}.gz</fileNamePattern>
+
+            <!-- keep 30 days' worth of history capped at 3GB total size -->
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+
+        <layout class="com.therdnotes.CustomLogbackJsonLayout">
+            <jsonFormatter
+                    class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+                <prettyPrint>false</prettyPrint>
+            </jsonFormatter>
+            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
+            <appendLineSeparator>true</appendLineSeparator>
+            <includeContextName>false</includeContextName>
+        </layout>
+    </appender>
+
+    <logger name="io.micronaut" level="${LOG_LEVEL}"/>
+    <root level="${LOG_LEVEL}">
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
