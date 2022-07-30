@@ -1,3 +1,12 @@
+# Purpose 
+This repo contains code for the video log at https://youtu.be/kDhTVAGaVLs  
+
+The video log demonstrates configuration of Logback for JSON output with custom fields.  
+
+
+---
+
+
 ## Micronaut 3.5.4 Documentation
 
 - [User Guide](https://docs.micronaut.io/3.5.4/guide/index.html)
