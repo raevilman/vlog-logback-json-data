@@ -1,5 +1,5 @@
 # Purpose 
-This repo contains code for the video log at https://youtu.be/kDhTVAGaVLs  
+This repo contains code for the video log at https://youtu.be/usKrJZ7LcfE  
 
 The video log demonstrates configuration of Logback for JSON output with custom fields.  
 
